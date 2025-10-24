@@ -1,9 +1,10 @@
-import { FileText, Download } from "lucide-react";
+import { FileText, Download, FolderOpen } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import BottomNav from "@/components/BottomNav";
-import { Button } from "@/components/ui/button";
 
 const Notes = () => {
+  const driveLink = "https://drive.google.com/drive/folders/1xyyF-_n4iY8GkSBKwoB23h8V8l_IHbIB?usp=sharing";
+
   const units = [
     { number: 1, title: "Introduction to Mobile Computing", pdf: "/notes/MC_UNIT_I_Notes.pdf" },
     { number: 2, title: "Emerging Wireless Network Standards", pdf: "/notes/MC_UNIT_II_Notes.pdf" },
@@ -18,8 +19,32 @@ const Notes = () => {
         title="Notes & PDFs" 
         subtitle="Study Materials by Unit"
       />
-      
-      <main className="max-w-screen-xl mx-auto px-4 py-6">
+
+      <main className="max-w-screen-xl mx-auto px-4 py-6 space-y-6">
+        {/* 🔗 Google Drive Folder Section */}
+        <div className="bg-card rounded-xl p-5 shadow-card border border-border">
+          <div className="flex items-center gap-4">
+            <div className="bg-secondary p-3 rounded-lg">
+              <FolderOpen className="w-6 h-6 text-primary" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-foreground mb-1">📁 Complete Notes Folder</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Access all Mobile Computing notes and study PDFs in one place.
+              </p>
+              <a
+                href={driveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Open Google Drive Folder
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 📚 Unit-wise Notes Section */}
         <div className="space-y-4">
           {units.map((unit) => (
             <div 
