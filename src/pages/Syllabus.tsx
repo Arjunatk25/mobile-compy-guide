@@ -7,12 +7,12 @@ const Syllabus = () => {
     {
       unitNumber: 1,
       title: "Introduction to Mobile Computing",
-      topicsCount: 6,
+      topicsCount: 7,
     },
     {
       unitNumber: 2,
-      title: "Emerging Wireless Standards",
-      topicsCount: 5,
+      title: "Emerging Wireless Network Standards",
+      topicsCount: 8,
     },
     {
       unitNumber: 3,

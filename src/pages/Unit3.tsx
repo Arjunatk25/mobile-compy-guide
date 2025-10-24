@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
 import ContentCard from "@/components/ContentCard";
 import BottomNav from "@/components/BottomNav";
+import unit3Icon from "@/assets/unit3-icon.jpg";
 
 const Unit3 = () => {
   const topics = [
@@ -52,10 +53,14 @@ const Unit3 = () => {
           Back to Syllabus
         </Link>
 
+        <div className="mb-6 rounded-xl overflow-hidden shadow-card">
+          <img src={unit3Icon} alt="Unit 3 - Mobile Networking" className="w-full h-48 object-cover" />
+        </div>
+
         <div className="space-y-4">
           {topics.map((topic, index) => (
             <ContentCard key={index} title={topic.title} icon={Book}>
-              <p>{topic.description}</p>
+              <p className="whitespace-pre-line">{topic.description}</p>
             </ContentCard>
           ))}
         </div>

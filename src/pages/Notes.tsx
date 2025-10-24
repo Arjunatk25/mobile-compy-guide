@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const Notes = () => {
   const units = [
-    { number: 1, title: "Introduction to Mobile Computing", files: 3 },
-    { number: 2, title: "Emerging Wireless Standards", files: 2 },
-    { number: 3, title: "Mobile Networking", files: 4 },
-    { number: 4, title: "Mobile Data Management", files: 3 },
-    { number: 5, title: "Mobile Computing Models", files: 2 },
+    { number: 1, title: "Introduction to Mobile Computing", hasNotes: true },
+    { number: 2, title: "Emerging Wireless Network Standards", hasNotes: true },
+    { number: 3, title: "Mobile Networking", hasNotes: false },
+    { number: 4, title: "Mobile Data Management", hasNotes: false },
+    { number: 5, title: "Mobile Computing Models", hasNotes: false },
   ];
 
   return (
@@ -33,28 +33,46 @@ const Notes = () => {
                       <h3 className="font-semibold text-foreground">Unit {unit.number}</h3>
                       <p className="text-sm text-muted-foreground">{unit.title}</p>
                     </div>
-                    <span className="text-xs bg-secondary text-primary px-3 py-1 rounded-full font-medium">
-                      {unit.files} files
-                    </span>
+                    {unit.hasNotes && (
+                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
+                        Available
+                      </span>
+                    )}
                   </div>
                   
                   <div className="mt-4 space-y-2">
-                    {Array.from({ length: unit.files }).map((_, idx) => (
+                    {unit.hasNotes ? (
+                      <a
+                        href="/notes/MC_UNIT_I-5_Notes.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between w-full px-4 py-3 text-left border border-border rounded-lg hover:bg-secondary transition-colors"
+                      >
+                        <span className="text-sm font-medium">Complete Course Notes (Units 1-2)</span>
+                        <Download className="w-4 h-4" />
+                      </a>
+                    ) : (
                       <Button
-                        key={idx}
                         variant="outline"
-                        className="w-full justify-between text-left"
+                        className="w-full justify-between text-left opacity-50"
                         disabled
                       >
-                        <span className="text-sm">Lecture Notes {idx + 1}.pdf</span>
+                        <span className="text-sm">Notes coming soon</span>
                         <Download className="w-4 h-4" />
                       </Button>
-                    ))}
+                    )}
                   </div>
                   
-                  <p className="text-xs text-muted-foreground mt-3 italic">
-                    Note: PDF upload functionality to be implemented
-                  </p>
+                  {unit.hasNotes && unit.number <= 2 && (
+                    <p className="text-xs text-muted-foreground mt-3">
+                      PDF includes detailed content from the course textbook
+                    </p>
+                  )}
+                  {!unit.hasNotes && (
+                    <p className="text-xs text-muted-foreground mt-3 italic">
+                      Additional notes for this unit will be added soon
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
