@@ -68,7 +68,7 @@ const Notes = () => {
                   
                   <div className="mt-4 space-y-2">
                     <a
-                      href={unit.pdf}
+                      href={driveLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-between w-full px-4 py-3 text-left border border-border rounded-lg hover:bg-secondary transition-colors"
